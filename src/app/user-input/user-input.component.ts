@@ -1,6 +1,6 @@
 import {Component, output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {InvestmentInput} from "../investment-input.model";
+import {InvestmentInput} from "./investment-input/investment-input.model";
 
 @Component({
   selector: 'app-user-input',
