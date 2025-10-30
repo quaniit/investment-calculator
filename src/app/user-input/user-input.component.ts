@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -11,10 +11,23 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
+  calculate = output<{
+    initialInvestment: number,
+    duration: number,
+    annualInvestment: number,
+    expectedReturn: number
+  }>();
   initialInvestment = '0';
   annualInvestment = '0';
   expectedReturn = '5';
   duration = '10';
 
-  onSubmit() {}
+  onSubmit() {
+    this.calculate.emit({
+      initialInvestment: +this.initialInvestment,
+      duration: +this.duration,
+      annualInvestment: +this.annualInvestment,
+      expectedReturn: +this.expectedReturn
+    });
+  }
 }
